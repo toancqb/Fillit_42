@@ -1,17 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lib.h                                           :+:      :+:    :+:   */
+/*   ft_static.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/23 14:13:07 by qtran             #+#    #+#             */
-/*   Updated: 2017/11/23 14:17:03 by qtran            ###   ########.fr       */
+/*   Created: 2017/11/23 14:08:23 by qtran             #+#    #+#             */
+/*   Updated: 2017/11/23 14:17:52 by qtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
+#include "ft_lib.h"
 
-#define NB_TETRI 19
-#define NB_BLOCK 17 
+int	vocabulary_tetri(void)
+{
+	static char **s;
+	int i;
+
+	if (!(s = (char**)malloc(sizeof(char *) * (NB_TETRI + 1))) || !s)
+		return (0);
+	s[NB_TETRI] = NULL;
+	i = 0;
+	while (i < NB_TETRI)
+	{
+		if (!(s[i] = ft_memmalloc(NB_BLOCK)) || !s)
+			return (0);
+		ft_strcpy(s[i], "");
+		i++;
+	}
+
+}
