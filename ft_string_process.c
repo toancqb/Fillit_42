@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_string_process.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/27 11:46:06 by qtran             #+#    #+#             */
-/*   Updated: 2017/11/27 12:07:41 by qtran            ###   ########.fr       */
+/*   Created: 2017/11/27 11:35:50 by qtran             #+#    #+#             */
+/*   Updated: 2017/11/27 11:44:44 by qtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_lib.h"
 
-int		main(int argc, char *argv[])
+char	**ft_init_tab(int x, int y)
 {
-	int i;
-	int j;
-	char *buf;
-	int fd;
-	int n;
+	char	**str;
+	int		i;
 
-	buf = ft_memalloc(BUF_SIZE);
-	if (argc != 2)
-		write(1, "usage:", 7);
-	else
+	if (!(str = (char **)malloc(sizeof(char*) * (x + 1))) || !str)
+		return (NULL);
+	str[x] = NULL;
+	i = 0;
+	while (i < x)
 	{
-		fd = open(argv[1], O_RDONLY);
-		i = 0;
-		while ((n = read(fd, buf, BUF_SIZE - 1)) > 0)
-		{
-			while (n >= 0)
-		}	
+		if (!(str[i] = (char *)malloc(sizeof(char) * (y + 1))) || !str[i])
+			return (NULL);
+		str[i][y] = '\0';
+		i++;
 	}
-	return (0);
+	return (str);
 }
