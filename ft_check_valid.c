@@ -1,39 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_static.c                                        :+:      :+:    :+:   */
+/*   ft_check_valid.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/23 14:08:23 by qtran             #+#    #+#             */
-/*   Updated: 2017/11/27 11:35:36 by qtran            ###   ########.fr       */
+/*   Created: 2017/11/27 15:38:31 by qtran             #+#    #+#             */
+/*   Updated: 2017/11/27 16:05:21 by qtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_lib.h"
 
-
-
-void	ft_assign_value(static char **s)
+char	**ft_split_line(char *str, char c)
 {
-	ft_strcpy(s[0], "##..#...#");	
+	char **tab;
+
+	tab = ft_strsplit((char const *)str, c);
+	return (tab);
 }
 
-char	**ft_pattern_tetri(void)
+int		ft_check_line(char **tab)
 {
-	static char	**s;
-	int			i;
+	int	i;
 
-	if (!(s = (char**)malloc(sizeof(char *) * (NB_BLOCK + 1))) || !s)
-		return (0);
-	s[NB_TETRI] = NULL;
 	i = 0;
-	while (i < NB_TETRI)
+	while (tab[i] != 0)
 	{
-		if (!(s[i] = ft_memmalloc(NB_TETRI)) || !s)
-			return (0);
 		i++;
 	}
-	ft_assign_value(s);
-	return ((char**)s);
+	if (i % 4 == 0)
+		return (i / 4);
+	else
+		return (0);
 }
