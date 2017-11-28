@@ -6,7 +6,7 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 11:35:50 by qtran             #+#    #+#             */
-/*   Updated: 2017/11/27 11:44:44 by qtran            ###   ########.fr       */
+/*   Updated: 2017/11/28 14:58:52 by qtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,3 +30,33 @@ char	**ft_init_tab(int x, int y)
 	}
 	return (str);
 }
+/*
+t_tetri	*ft_cpy_to_tetri(char **tab)
+{
+	int		i;
+	int		k;
+	t_tetri	*t;
+	int		j;
+
+	if (!(t = (t_tetri *)malloc(sizeof(t_tetri) *
+					(ft_check_line(tab) + 1))) || !t)
+		return (NULL);
+	i = 0;
+	k = 0;
+	while (tab[i])
+	{
+		if (i % 4 == 0)
+		{
+			t[k].tab[j] = 0;
+			t[k++].tab = ft_init_tab(5, 4);
+			j = 0;
+		}
+		else
+		{
+			ft_strncpy(t[k].tab[j], tab[i], 4);
+			i++;
+			j++;
+		}
+	}
+	return (t);
+}*/

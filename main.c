@@ -6,7 +6,7 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 11:46:06 by qtran             #+#    #+#             */
-/*   Updated: 2017/11/27 18:00:53 by qtran            ###   ########.fr       */
+/*   Updated: 2017/11/28 14:58:58 by qtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ int		main(int argc, char *argv[])
 	int n;
 	int i;
 	char **tab;
+	int len;
+	t_tetri *vn;
+	//char test[] = "1111\n2222\n3333\n4444";
 
 	buf = ft_memalloc(BUF_SIZE);
 	buf_tmp = ft_memalloc(21);
@@ -28,16 +31,24 @@ int		main(int argc, char *argv[])
 		write(1, "usage:", 7);
 	else
 	{
-		i = 0;
 		fd = open(argv[1], O_RDONLY);
 		while ((n = read(fd, buf_tmp, 20)) > 0)
 		{
 			ft_strncat(buf, buf_tmp, n);
-			ft_putstr(buf_tmp);
-			write(1, "\nzz\n", 4);
 		}
 		tab = ft_split_line(buf, '\n');
-		printf("%d \n", ft_check_line(tab));	
+		len = ft_check_line(tab);
+		i = 0;
+		vn = ft_cpy_to_tetri(tab);
+		while (i < len)
+		{
+			int m = 0;
+			while (vn[i].tab[m])
+			{
+				printf("%s  ", vn[i].tab[m++]);
+			}	
+			i++;
+		}
 	}
 	return (0);
 }
