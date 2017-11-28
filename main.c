@@ -6,7 +6,7 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 11:46:06 by qtran             #+#    #+#             */
-/*   Updated: 2017/11/28 14:58:58 by qtran            ###   ########.fr       */
+/*   Updated: 2017/11/28 16:58:05 by qtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,13 @@ int		main(int argc, char *argv[])
 		vn = ft_cpy_to_tetri(tab);
 		while (i < len)
 		{
+			printf("%d\n", i);
 			int m = 0;
 			while (vn[i].tab[m])
 			{
-				printf("%s  ", vn[i].tab[m++]);
-			}	
+				printf("%s\n", vn[i].tab[m++]);
+			}
+			write(1, "\n", 2);
 			i++;
 		}
 	}
