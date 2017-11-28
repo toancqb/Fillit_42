@@ -6,7 +6,7 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 15:38:31 by qtran             #+#    #+#             */
-/*   Updated: 2017/11/28 17:19:51 by qtran            ###   ########.fr       */
+/*   Updated: 2017/11/28 19:40:22 by qtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,3 +114,11 @@ int		ft_check_count(t_tetri *t, int len)
 	}
 	return (1);
 }
+/*
+int		ft_check_valid(t_tetri *t, int len)
+{
+	if (!(ft_check_format()) || !(ft_check_count(t, len)))
+	return (0);
+
+
+}*/
