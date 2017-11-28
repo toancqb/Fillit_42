@@ -6,7 +6,7 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 16:23:12 by qtran             #+#    #+#             */
-/*   Updated: 2017/11/27 16:25:46 by qtran            ###   ########.fr       */
+/*   Updated: 2017/11/28 17:59:23 by qtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,3 +17,48 @@ void	ft_error(void)
 	write(1, "error\n", 7);
 	exit(0);
 }
+
+void	ft_display_tetri(t_tetri *t, int len)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (i < len)
+	{
+		/*j = 0;
+		while (t[i].tab[j])
+		{
+			ft_putstr(t[i].tab[j]);
+			j++;
+		}*/
+		j = 0;
+		while (j < 4)
+		{
+			printf("%d : (%d %d)\n", i, t[i].coord.x[j], t[i].coord.y[j]);
+			j++;
+		}
+		i++;
+	}
+}
+
+/*
+void	ft_display_tetri(t_tetri t)
+{
+	int i;
+
+	i = 0;
+	while (t.tab[i])
+	{
+		ft_putstr(t.tab[i]);
+		write(1, "\n", 2);
+		i++;
+	}
+	i = 0;
+	while (i < 4)
+	{
+		//ft_putnbr(t.coord.x[i]);
+		printf("%d : (%d  %d)\n", i, t.coord.x[i], t.coord.y[i]);
+		i++;
+	}
+}*/

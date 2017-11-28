@@ -6,7 +6,7 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 11:35:50 by qtran             #+#    #+#             */
-/*   Updated: 2017/11/28 17:03:22 by qtran            ###   ########.fr       */
+/*   Updated: 2017/11/28 18:23:40 by qtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,45 @@ t_tetri	*ft_cpy_tab(char **tab)
 	return (t);
 }
 
-void	ft_cpy_coord(t_tetri *t)
+static void	ft_assign_coord(t_tetri *t, char **tab)
 {
-	
+	int i;
+	int j;
+	int flag;
 
+	flag = 0;
+	i = 0;
+	while (tab[i])
+	{
+		j = 0;
+		while (tab[i][j])
+		{
+			if (flag == 0 && tab[i][j] == '#')
+			{
+				t->coord.x[0] = i;
+				t->coord.y[0] = j;
+				flag++;
+			}
+			else if (tab[i][j] == '#')
+			{
+				t->coord.x[flag] = i - t->coord.x[0];
+				t->coord.y[flag++] = j - t->coord.y[0];
+			}
+			j++;
+		}
+		i++;
+	}
+}
 
+t_tetri	*ft_cpy_coord(t_tetri *t, int len)
+{
+	int i;
 
-
-
-
+	i = 0;	
+	while (i < len)
+	{
+		ft_assign_coord(&t[i], t[i].tab);
+		i++;
+	}
+	return (t);
 }
