@@ -6,7 +6,7 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 14:13:07 by qtran             #+#    #+#             */
-/*   Updated: 2017/11/28 16:58:07 by qtran            ###   ########.fr       */
+/*   Updated: 2017/11/28 17:12:37 by qtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ int		ft_check_line(char **tab);
 int		ft_check_buf(char *buf);
 void	ft_error(void);
 int		ft_check_format(char *buf, char **tab);
-t_tetri	*ft_cpy_to_tetri(char **tab);
+t_tetri	*ft_cpy_tab(char **tab);
+int		ft_check_count(t_tetri *t, int len);
 //libft.h
 void	*ft_memalloc(size_t size); //
 int		ft_strlen(const char *s); //

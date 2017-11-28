@@ -6,7 +6,7 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 11:46:06 by qtran             #+#    #+#             */
-/*   Updated: 2017/11/28 16:58:05 by qtran            ###   ########.fr       */
+/*   Updated: 2017/11/28 17:15:53 by qtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,8 @@ int		main(int argc, char *argv[])
 		tab = ft_split_line(buf, '\n');
 		len = ft_check_line(tab);
 		i = 0;
-		vn = ft_cpy_to_tetri(tab);
-		while (i < len)
-		{
-			printf("%d\n", i);
-			int m = 0;
-			while (vn[i].tab[m])
-			{
-				printf("%s\n", vn[i].tab[m++]);
-			}
-			write(1, "\n", 2);
-			i++;
-		}
+		vn = ft_cpy_tab(tab);
+		printf("%d ", ft_check_count(vn, len));
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 11:35:50 by qtran             #+#    #+#             */
-/*   Updated: 2017/11/28 16:58:01 by qtran            ###   ########.fr       */
+/*   Updated: 2017/11/28 17:03:22 by qtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	**ft_init_tab(int x, int y)
 	return (str);
 }
 
-t_tetri	*ft_cpy_to_tetri(char **tab)
+t_tetri	*ft_cpy_tab(char **tab)
 {
 	int		i;
 	int		len;
@@ -57,4 +57,15 @@ t_tetri	*ft_cpy_to_tetri(char **tab)
 		i++;
 	}
 	return (t);
+}
+
+void	ft_cpy_coord(t_tetri *t)
+{
+	
+
+
+
+
+
+
 }
