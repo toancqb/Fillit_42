@@ -6,19 +6,11 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 15:38:31 by qtran             #+#    #+#             */
-/*   Updated: 2017/11/28 19:40:22 by qtran            ###   ########.fr       */
+/*   Updated: 2017/11/29 14:51:05 by qtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_lib.h"
-
-char	**ft_split_line(char *str, char c)
-{
-	char **tab;
-
-	tab = ft_strsplit((char const *)str, c);
-	return (tab);
-}
 
 int		ft_check_buf(char *buf)
 {
@@ -107,18 +99,61 @@ int		ft_check_count(t_tetri *t, int len)
 	while (i < len)
 	{
 		ft_count_pattern(t[i].tab, &c_sh, &c_p);
-		printf("%d  %d\n", c_sh, c_p);
 		if (c_sh != 4 || c_p != 12)
 			return (0);
 		i++;
 	}
 	return (1);
 }
-/*
-int		ft_check_valid(t_tetri *t, int len)
+
+int		ft_check_pattern(t_tetri *t, int len)
 {
-	if (!(ft_check_format()) || !(ft_check_count(t, len)))
-	return (0);
+	t_coord *cmp_t;
+	int		i;
+	int		j;
+	int		flag;
+	int		k;
 
+	cmp_t = ft_tetriminos();
+	i = 0;
+	flag = 0;
+	while (i < len)
+	{
+		j = 0;
+		while (j < NB_BLOCK)
+		{
+			flag = 0;
+			k = 1;
+			while (k < 4)
+			{
+				if (t[i].coord.x[k] == cmp_t[j].x[k] &&
+						t[i].coord.y[k] == cmp_t[j].y[k])
+					flag++;
+				k++;
+			}
+			if (flag == 3)
+				break ;
+			j++;
+		}
+		if (flag != 3)
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
-}*/
+int		ft_check_valid(char *buf)
+{
+	t_tetri *vn;
+	char	**tab;
+	int		len;
+
+	tab = ft_split_line(buf, '\n');
+	if (!(len = ft_check_format(buf, tab)) || !len)
+		return (0);
+	vn = ft_cpy_tab(tab);
+	vn = ft_cpy_coord(vn, len);
+	if (!ft_check_count(vn, len) || !ft_check_pattern(vn, len))
+		return (0);
+	return (1);
+}

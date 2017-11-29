@@ -6,7 +6,7 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 11:46:06 by qtran             #+#    #+#             */
-/*   Updated: 2017/11/28 17:50:39 by qtran            ###   ########.fr       */
+/*   Updated: 2017/11/29 14:16:22 by qtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,7 @@ int		main(int argc, char *argv[])
 		{
 			ft_strncat(buf, buf_tmp, n);
 		}
-		tab = ft_split_line(buf, '\n');
-		len = ft_check_line(tab);
-		i = 0;
-		vn = ft_cpy_tab(tab);
-		vn = ft_cpy_coord(vn, len);
-		ft_display_tetri(vn, len);
+		printf("%d\n", ft_check_valid(buf));
 	}
 	return (0);
 }

@@ -12,6 +12,15 @@
 
 #include "ft_lib.h"
 
+
+char    **ft_split_line(char *str, char c)
+{
+    char **tab;
+    
+    tab = ft_strsplit((char const *)str, c);
+    return (tab);
+}
+
 char	**ft_init_tab(int x, int y)
 {
 	char	**str;
