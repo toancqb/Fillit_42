@@ -6,7 +6,7 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 14:13:07 by qtran             #+#    #+#             */
-/*   Updated: 2017/11/29 14:23:42 by qtran            ###   ########.fr       */
+/*   Updated: 2017/11/30 11:51:32 by qtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,17 @@ typedef struct	s_tetri
 	char	**tab;
 }				t_tetri;
 
-void	ft_assign_value(char **s);
+typedef struct	s_map
+{
+	t_tetri	*t;
+	char	**m;
+	int		size;
+	int		size_tetri;
+}				t_map;
+
 char	**ft_pattern_tetri(void);
 char	**ft_init_tab(int x, int y);
+void ft_del_tab(char **tab);
 char	**ft_split_line(char *str, char c);
 void	ft_putstr(char *s);
 int		ft_check_line(char **tab);
@@ -53,8 +61,10 @@ int		ft_check_count(t_tetri *t, int len);
 void	ft_display_tetri(t_tetri *t, int len);
 t_coord	*ft_tetriminos(void);
 int		ft_check_pattern(t_tetri *t, int len);
-int		ft_check_valid(char *buf);
-
+t_tetri	*ft_check_valid(char *buf);
+t_map	*ft_init_map(t_tetri *t, int size);
+void	ft_display_map(t_map map);
+void	ft_del_map(t_map **map);
 //libft.h
 void	*ft_memalloc(size_t size); //
 int		ft_strlen(const char *s); //

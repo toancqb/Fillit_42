@@ -6,17 +6,16 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 11:35:50 by qtran             #+#    #+#             */
-/*   Updated: 2017/11/28 19:04:35 by qtran            ###   ########.fr       */
+/*   Updated: 2017/11/30 11:10:51 by qtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_lib.h"
 
-
 char    **ft_split_line(char *str, char c)
 {
     char **tab;
-    
+
     tab = ft_strsplit((char const *)str, c);
     return (tab);
 }
@@ -38,6 +37,23 @@ char	**ft_init_tab(int x, int y)
 		i++;
 	}
 	return (str);
+}
+
+void ft_del_tab(char **tab)
+{
+  int i;
+
+  if (tab)
+  {
+    i = 0;
+    while (tab[i])
+    {
+      free(tab[i]);
+      i++;
+    }
+    *tab = NULL;
+    free(tab);
+  }
 }
 
 t_tetri	*ft_cpy_tab(char **tab)
@@ -102,7 +118,7 @@ t_tetri	*ft_cpy_coord(t_tetri *t, int len)
 {
 	int i;
 
-	i = 0;	
+	i = 0;
 	while (i < len)
 	{
 		ft_assign_coord(&t[i], t[i].tab);
@@ -110,5 +126,3 @@ t_tetri	*ft_cpy_coord(t_tetri *t, int len)
 	}
 	return (t);
 }
-
-

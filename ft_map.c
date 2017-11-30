@@ -6,7 +6,7 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 14:08:23 by qtran             #+#    #+#             */
-/*   Updated: 2017/11/29 13:51:49 by qtran            ###   ########.fr       */
+/*   Updated: 2017/11/30 11:51:24 by qtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,21 +29,55 @@ t_coord *ft_tetriminos(void)
     return (cmp_tetri);
 }
 
-/*char	**ft_pattern_tetri(void)
+t_map	*ft_init_map(t_tetri *t, int size)
 {
-	static char	**s;
-	int			i;
+	t_map	*map;
+	int		i;
+	int		j;
 
-	if (!(s = (char**)malloc(sizeof(char *) * (NB_BLOCK + 1))) || !s)
-		return (0);
-	s[NB_TETRI] = NULL;
+	if (!(map = (t_map *)malloc(sizeof(t_map))) || !map)
+		return (NULL);
+	map->t = t;
+	map->size = size;
+	if (!(map->m = ft_init_tab(size, size)) || !map->m)
+		return (NULL);
 	i = 0;
-	while (i < NB_TETRI)
+	while (i < size)
 	{
-		if (!(s[i] = ft_memmalloc(NB_TETRI)) || !s)
-			return (0);
+		j = 0;
+		while (j < size)
+		{
+			map->m[i][j] = '.';
+			j++;
+		}
 		i++;
 	}
-	ft_assign_value(s);
-	return ((char**)s);
+	return (map);
+}
+
+void	ft_del_map(t_map **map)
+{
+	int i;
+
+	if (map)
+	{
+		free((*map)->t);
+		ft_del_tab((*map)->m);
+		/*i = 0;
+		while (i < (*map)->size)
+		{
+			free((*map)->m[i]);
+			i++;
+		}
+		free((*map)->m);*/
+		*map = NULL;
+	}
+}
+/*
+int		ft_add_tetri_to_map(t_map *map, int index, int x, int y)
+{
+	int i;
+	int j;
+
+	if (x < map->size || y < map->size || )
 }*/

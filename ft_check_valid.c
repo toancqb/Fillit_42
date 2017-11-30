@@ -6,7 +6,7 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 15:38:31 by qtran             #+#    #+#             */
-/*   Updated: 2017/11/29 14:51:05 by qtran            ###   ########.fr       */
+/*   Updated: 2017/11/30 11:51:29 by qtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,7 @@ int		ft_check_pattern(t_tetri *t, int len)
 	return (1);
 }
 
-int		ft_check_valid(char *buf)
+t_tetri	*ft_check_valid(char *buf)
 {
 	t_tetri *vn;
 	char	**tab;
@@ -150,10 +150,11 @@ int		ft_check_valid(char *buf)
 
 	tab = ft_split_line(buf, '\n');
 	if (!(len = ft_check_format(buf, tab)) || !len)
-		return (0);
+		return (NULL);
 	vn = ft_cpy_tab(tab);
 	vn = ft_cpy_coord(vn, len);
 	if (!ft_check_count(vn, len) || !ft_check_pattern(vn, len))
-		return (0);
-	return (1);
+		return (NULL);
+	ft_del_tab(tab);
+	return (vn);
 }

@@ -6,7 +6,7 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 16:23:12 by qtran             #+#    #+#             */
-/*   Updated: 2017/11/28 19:04:14 by qtran            ###   ########.fr       */
+/*   Updated: 2017/11/30 11:18:06 by qtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,29 @@
 
 void	ft_error(void)
 {
-	write(1, "error\n", 7);
+	write(1, "error\n", 6);
 	exit(0);
 }
 
+void	ft_display_map(t_map map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < map.size)
+	{
+		j = 0;
+		while (j < map.size)
+		{
+			write(1, &map.m[i][j], 1);
+			j++;
+		}
+		write(1, "\n", 1);
+		i++;
+	}
+}
+/*
 void	ft_display_tetri(t_tetri *t, int len)
 {
 	int i;
@@ -38,27 +57,6 @@ void	ft_display_tetri(t_tetri *t, int len)
 			printf("%d : (%d %d)\n", i, t[i].coord.x[j], t[i].coord.y[j]); // printf
 			j++;
 		}
-		i++;
-	}
-}
-
-/*
-void	ft_display_tetri(t_tetri t)
-{
-	int i;
-
-	i = 0;
-	while (t.tab[i])
-	{
-		ft_putstr(t.tab[i]);
-		write(1, "\n", 2);
-		i++;
-	}
-	i = 0;
-	while (i < 4)
-	{
-		//ft_putnbr(t.coord.x[i]);
-		printf("%d : (%d  %d)\n", i, t.coord.x[i], t.coord.y[i]);
 		i++;
 	}
 }*/
