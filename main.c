@@ -33,10 +33,13 @@ int		main(int argc, char *argv[])
 		{
 			ft_strncat(buf, buf_tmp, n);
 		}
-		map->t = ft_check_valid(buf);
+		map->t = ft_check_valid(buf, &n);
 		if (map->t == NULL)
 			ft_error();
-			
+		map->size_tetri = n;
+		printf("%d\n", ft_add_tetri_to_map(map, 2, 0, 0));
+		printf("%d\n", ft_del_tetri_from_map(map, 2, 0, 0));
+		ft_display_map(*map);
 	}
 	return (0);
 }

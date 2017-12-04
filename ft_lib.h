@@ -34,6 +34,7 @@ typedef struct	s_coord
 
 typedef struct	s_tetri
 {
+	int flag;
 	t_coord	coord;
 	char	**tab;
 }				t_tetri;
@@ -61,14 +62,16 @@ int		ft_check_count(t_tetri *t, int len);
 void	ft_display_tetri(t_tetri *t, int len);
 t_coord	*ft_tetriminos(void);
 int		ft_check_pattern(t_tetri *t, int len);
-t_tetri	*ft_check_valid(char *buf);
+t_tetri	*ft_check_valid(char *buf, int *size_tetri);
 t_map	*ft_init_map(t_tetri *t, int size);
 void	ft_display_map(t_map map);
 void	ft_del_map(t_map **map);
+int		ft_add_tetri_to_map(t_map *map, int index, int x, int y);
+int		ft_del_tetri_from_map(t_map *map, int index, int x, int y);
 //libft.h
 void	*ft_memalloc(size_t size); //
 int		ft_strlen(const char *s); //
-char	*ft_strncpy(char *dst, const char *src, size_t len);
+char	*ft_strncpy(char *dst, const char *src, size_t len); //
 char	*ft_strncat(char *s1, const char *s2, size_t n); //
 char	**ft_strsplit(char const *str, char c); //
 

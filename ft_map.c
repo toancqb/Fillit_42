@@ -73,11 +73,61 @@ void	ft_del_map(t_map **map)
 		*map = NULL;
 	}
 }
-/*
+
 int		ft_add_tetri_to_map(t_map *map, int index, int x, int y)
 {
 	int i;
-	int j;
 
-	if (x < map->size || y < map->size || )
-}*/
+	if (x >= map->size || y >= map->size || index >= map->size_tetri
+	|| map->m[x][y] != '.')
+		return (0);
+	i = 1;
+	while (i < 4 && x + map->t[index].coord.x[i] < map->size
+							 && y + map->t[index].coord.y[i] < map->size)
+	{
+		if (map->m[x + map->t[index].coord.x[i]]
+							[y + map->t[index].coord.y[i]] != '.')
+							return (0);
+		i++;
+	}
+	if (i != 4)
+		return (0);
+	map->m[x][y] = 'A' + index;
+	i = 1;
+	while (i < 4)
+	{
+		map->m[x + map->t[index].coord.x[i]]
+		[y + map->t[index].coord.y[i]] = 'A' + index;
+		i++;
+	}
+	return (1);
+}
+
+int		ft_del_tetri_from_map(t_map *map, int index, int x, int y)
+{
+	int i;
+
+	if (x >= map->size || y >= map->size || index >= map->size_tetri
+	|| map->m[x][y] == '.')
+		return (0);
+	i = 1;
+	while (i < 4 && x + map->t[index].coord.x[i] < map->size
+							 && y + map->t[index].coord.y[i] < map->size)
+	{
+		if (map->m[x + map->t[index].coord.x[i]]
+							[y + map->t[index].coord.y[i]] == '.')
+							return (0);
+		i++;
+	}
+	if (i != 4)
+		return (0);
+	map->m[x][y] = '.';
+	i = 1;
+	while (i < 4)
+	{
+		map->m[x + map->t[index].coord.x[i]]
+		[y + map->t[index].coord.y[i]] = '.';
+		i++;
+	}
+	return (1);
+}

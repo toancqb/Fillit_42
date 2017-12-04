@@ -142,19 +142,20 @@ int		ft_check_pattern(t_tetri *t, int len)
 	return (1);
 }
 
-t_tetri	*ft_check_valid(char *buf)
+t_tetri	*ft_check_valid(char *buf, int *size_tetri)
 {
 	t_tetri *vn;
 	char	**tab;
-	int		len;
 
 	tab = ft_split_line(buf, '\n');
-	if (!(len = ft_check_format(buf, tab)) || !len)
+	if (!(*size_tetri = ft_check_format(buf, tab)))
 		return (NULL);
 	vn = ft_cpy_tab(tab);
-	vn = ft_cpy_coord(vn, len);
-	if (!ft_check_count(vn, len) || !ft_check_pattern(vn, len))
+	vn = ft_cpy_coord(vn, *size_tetri);
+	if (!ft_check_count(vn, *size_tetri)
+				|| !ft_check_pattern(vn, *size_tetri))
 		return (NULL);
 	ft_del_tab(tab);
+	vn->flag = 0;
 	return (vn);
 }

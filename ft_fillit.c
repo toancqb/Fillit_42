@@ -12,4 +12,15 @@
 
 #include "ft_lib.h"
 
+int ft_btracking(int m_map, int k_tetri)
+{
+  int i;
 
+  i = 0;
+  while ()
+}
+
+int ft_fillit()
+{
+
+}
