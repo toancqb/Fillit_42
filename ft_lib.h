@@ -68,6 +68,9 @@ void	ft_display_map(t_map map);
 void	ft_del_map(t_map **map);
 int		ft_add_tetri_to_map(t_map *map, int index, int x, int y);
 int		ft_del_tetri_from_map(t_map *map, int index, int x, int y);
+void ft_btracking(char *buf); //
+int ft_bt(t_map *map, int k_tetri);
+int ft_done(t_tetri *t, int size);//
 //libft.h
 void	*ft_memalloc(size_t size); //
 int		ft_strlen(const char *s); //

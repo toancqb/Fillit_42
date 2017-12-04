@@ -156,6 +156,5 @@ t_tetri	*ft_check_valid(char *buf, int *size_tetri)
 				|| !ft_check_pattern(vn, *size_tetri))
 		return (NULL);
 	ft_del_tab(tab);
-	vn->flag = 0;
 	return (vn);
 }

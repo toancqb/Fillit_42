@@ -24,6 +24,7 @@ char	**ft_init_tab(int x, int y)
 {
 	char	**str;
 	int		i;
+  int   j;
 
 	if (!(str = (char **)malloc(sizeof(char*) * (x + 1))) || !str)
 		return (NULL);
@@ -33,6 +34,12 @@ char	**ft_init_tab(int x, int y)
 	{
 		if (!(str[i] = (char *)malloc(sizeof(char) * (y + 1))) || !str[i])
 			return (NULL);
+    j = 0;
+    while (j < y)
+    {
+      str[i][j] = '.';
+      j++;
+    }
 		str[i][y] = '\0';
 		i++;
 	}
@@ -121,6 +128,7 @@ t_tetri	*ft_cpy_coord(t_tetri *t, int len)
 	i = 0;
 	while (i < len)
 	{
+    t[i].flag = 0;
 		ft_assign_coord(&t[i], t[i].tab);
 		i++;
 	}

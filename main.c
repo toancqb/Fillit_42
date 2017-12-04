@@ -20,7 +20,7 @@ int		main(int argc, char *argv[])
 	int		n;
 	t_map	*map;
 
-	if (!(map = ft_init_map(NULL, 2)) || !map)
+	if (!(map = ft_init_map(NULL, 4)) || !map)
 		return (0);
 	buf = ft_memalloc(BUF_SIZE);
 	buf_tmp = ft_memalloc(21);
@@ -36,10 +36,12 @@ int		main(int argc, char *argv[])
 		map->t = ft_check_valid(buf, &n);
 		if (map->t == NULL)
 			ft_error();
-		map->size_tetri = n;
-		printf("%d\n", ft_add_tetri_to_map(map, 2, 0, 0));
-		printf("%d\n", ft_del_tetri_from_map(map, 2, 0, 0));
-		ft_display_map(*map);
+		//map->size_tetri = n;
+		ft_del_map(&map);
+		//ft_done(map->t, map->size_tetri);
+		//printf("\n%d\n", map->size_tetri);
+		//ft_bt(map, 0);
+		ft_btracking(buf);
 	}
 	return (0);
 }

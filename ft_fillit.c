@@ -12,15 +12,90 @@
 
 #include "ft_lib.h"
 
-int ft_btracking(int m_map, int k_tetri)
+int ft_done(t_tetri *t, int size)
 {
   int i;
 
   i = 0;
-  while ()
+  while (i < size)
+  {
+    if (t[i].flag == 0)
+      return (0);
+    i++;
+  }
+  return (1);
 }
 
-int ft_fillit()
+int ft_bt(t_map *map, int k_tetri)
 {
+  int i;
+  int j;
+  int k;
+  int p;
 
+  k = 0;
+  while (k < map->size_tetri)
+  {
+    if (map->t[k].flag == 0)
+    {
+      i = 0;
+      while (i < map->size)
+      {
+        j = 0;
+        while (j < map->size)
+        {
+          p = ft_add_tetri_to_map(map, k, i, j);
+          if (p)
+          {
+            map->t[k].flag = 1;
+            break ;
+          }
+          j++;
+        }
+        if (p)
+          break ;
+        i++;
+      }
+      if (!p)
+        return (0);
+      if (ft_done(map->t, map->size_tetri))
+      {
+        ft_display_map(*map);
+        return (1);
+      }
+      else
+      {
+        ft_bt(map, k_tetri + 1);
+        ft_del_tetri_from_map(map, k, i, j);
+        map->t[k].flag = 0;
+      }
+    }
+    k++;
+  }
+  return (0);
+}
+
+void ft_btracking(char *buf)
+{
+  int len;
+  int m_map;
+  t_map *map;
+
+  len = 0;
+  m_map = 2;
+  map = ft_init_map(NULL, 2);
+  map->size = 2;
+  map->t = ft_check_valid(buf, &len);
+  map->size_tetri = len;
+  while (m_map < 100)
+  {
+    if (ft_bt(map, 0))
+      break ;
+    ft_del_tab(map->m);
+  //printf("%d ", m_map);
+    m_map++;
+    map->size = m_map;
+    map->m = ft_init_tab(m_map, m_map);
+  }
+  ft_del_map(&map);
 }
