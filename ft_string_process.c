@@ -6,7 +6,7 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 11:35:50 by qtran             #+#    #+#             */
-/*   Updated: 2017/11/30 11:10:51 by qtran            ###   ########.fr       */
+/*   Updated: 2017/12/04 23:35:03 by qtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	**ft_init_tab(int x, int y)
 {
 	char	**str;
 	int		i;
-  int   j;
+	int		j; //
 
 	if (!(str = (char **)malloc(sizeof(char*) * (x + 1))) || !str)
 		return (NULL);
@@ -34,12 +34,12 @@ char	**ft_init_tab(int x, int y)
 	{
 		if (!(str[i] = (char *)malloc(sizeof(char) * (y + 1))) || !str[i])
 			return (NULL);
-    j = 0;
-    while (j < y)
+    j = 0;//
+    while (j < y)//
     {
       str[i][j] = '.';
       j++;
-    }
+    }//
 		str[i][y] = '\0';
 		i++;
 	}

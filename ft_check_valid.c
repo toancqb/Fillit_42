@@ -6,7 +6,7 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 15:38:31 by qtran             #+#    #+#             */
-/*   Updated: 2017/11/30 11:51:29 by qtran            ###   ########.fr       */
+/*   Updated: 2017/12/04 23:31:16 by qtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		ft_check_buf(char *buf)
 		else if (buf[j] == '\n')
 			return (0);
 		j++;
-	}
+	}	
 	return (1);
 }
 
@@ -91,7 +91,6 @@ static void	ft_count_pattern(char **tab, int *sh, int *p)
 int		ft_check_count(t_tetri *t, int len)
 {
 	int i;
-	int j;
 	int c_sh;
 	int c_p;
 
@@ -153,7 +152,7 @@ t_tetri	*ft_check_valid(char *buf, int *size_tetri)
 	vn = ft_cpy_tab(tab);
 	vn = ft_cpy_coord(vn, *size_tetri);
 	if (!ft_check_count(vn, *size_tetri)
-				|| !ft_check_pattern(vn, *size_tetri))
+			|| !ft_check_pattern(vn, *size_tetri))
 		return (NULL);
 	ft_del_tab(tab);
 	return (vn);

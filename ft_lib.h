@@ -20,11 +20,11 @@
 
 # define BUF_SIZE 2048
 # define NB_TETRI 19
-# define NB_BLOCK 17
+# define NB_BLOCK 19
 # define X 4
 # define Y 4
 
-# include <stdio.h> // TEST
+
 
 typedef struct	s_coord
 {

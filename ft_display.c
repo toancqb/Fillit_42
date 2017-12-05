@@ -6,7 +6,7 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 16:23:12 by qtran             #+#    #+#             */
-/*   Updated: 2017/11/30 11:18:06 by qtran            ###   ########.fr       */
+/*   Updated: 2017/12/04 23:31:23 by qtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,26 +37,26 @@ void	ft_display_map(t_map map)
 	}
 }
 /*
-void	ft_display_tetri(t_tetri *t, int len)
-{
-	int i;
-	int j;
+   void	ft_display_tetri(t_tetri *t, int len)
+   {
+   int i;
+   int j;
 
-	i = 0;
-	while (i < len)
-	{
-		j = 0;
-		while (t[i].tab[j])
-		{
-			printf("%s\n", t[i].tab[j]);	// printf
-			j++;
-		}
-		j = 0;
-		while (j < 4)
-		{
-			printf("%d : (%d %d)\n", i, t[i].coord.x[j], t[i].coord.y[j]); // printf
-			j++;
-		}
-		i++;
-	}
-}*/
+   i = 0;
+   while (i < len)
+   {
+   j = 0;
+   while (t[i].tab[j])
+   {
+   printf("%s\n", t[i].tab[j]);	// printf
+   j++;
+   }
+   j = 0;
+   while (j < 4)
+   {
+   printf("%d : (%d %d)\n", i, t[i].coord.x[j], t[i].coord.y[j]); // printf
+   j++;
+   }
+   i++;
+   }
+   }*/
