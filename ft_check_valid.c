@@ -12,6 +12,16 @@
 
 #include "ft_lib.h"
 
+int		ft_check_last_buf(char *buf)
+{
+	int len;
+
+	len = ft_strlen(buf);
+	if (buf[len - 1] == '\n' && buf[len - 2] == '\n')
+		return (0);
+	return (1);
+}
+
 int		ft_check_buf(char *buf)
 {
 	int i;
@@ -39,7 +49,7 @@ int		ft_check_buf(char *buf)
 		else if (buf[j] == '\n')
 			return (0);
 		j++;
-	}	
+	}
 	return (1);
 }
 
@@ -60,7 +70,7 @@ int		ft_check_line(char **tab)
 
 int		ft_check_format(char *buf, char **tab)
 {
-	if (!(ft_check_buf(buf)))
+	if (!(ft_check_last_buf(buf)) || !(ft_check_buf(buf)))
 		return (0);
 	return (ft_check_line(tab));
 }
@@ -73,10 +83,10 @@ static void	ft_count_pattern(char **tab, int *sh, int *p)
 	*sh = 0;
 	*p = 0;
 	i = 0;
-	while (tab[i])
+	while (tab[i] != '\0')
 	{
 		j = 0;
-		while (tab[i][j])
+		while (tab[i][j] != '\0')
 		{
 			if (tab[i][j] == '#')
 				(*sh)++;

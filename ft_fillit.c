@@ -93,7 +93,6 @@ void	ft_btracking(char *buf)
 		if (ft_bt(map, 0))
 			break ;
 		ft_del_tab(map->m);
-		//printf("%d ", m_map);
 		m_map++;
 		map->size = m_map;
 		map->m = ft_init_tab(m_map, m_map);

@@ -110,7 +110,7 @@ static void	ft_assign_coord(t_tetri *t, char **tab)
 				t->coord.y[0] = j;
 				flag++;
 			}
-			else if (tab[i][j] == '#')
+			else if (flag <= 3 && tab[i][j] == '#')
 			{
 				t->coord.x[flag] = i - t->coord.x[0];
 				t->coord.y[flag++] = j - t->coord.y[0];

@@ -17,7 +17,7 @@
 # include <fcntl.h>
 # include <sys/types.h>
 # include <sys/uio.h>
-
+#include <stdio.h>
 # define BUF_SIZE 2048
 # define NB_TETRI 19
 # define NB_BLOCK 19
