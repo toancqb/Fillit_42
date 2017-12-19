@@ -52,38 +52,31 @@ int			ft_check_count(t_tetri *t, int len)
 	return (1);
 }
 
-int			ft_check_pattern(t_tetri *t, int len)
+int			ft_check_pattern(t_tetri *t, int len, t_coord *cmp_t)
 {
-	t_coord *cmp_t;
-	int		i;
-	int		j;
-	int		flag;
-	int		k;
+	int		i[4];
 
-	cmp_t = ft_tetriminos();
-	i = 0;
-	flag = 0;
-	while (i < len)
+	i[0] = 0;
+	while (i[0] < len)
 	{
-		j = 0;
-		while (j < NB_BLOCK)
+		i[1] = 0;
+		while (i[1] < NB_BLOCK)
 		{
-			flag = 0;
-			k = 1;
-			while (k < 4)
+			i[2] = 0;
+			i[3] = 1;
+			while (i[3] < 4)
 			{
-				if (t[i].coord.x[k] == cmp_t[j].x[k] &&
-						t[i].coord.y[k] == cmp_t[j].y[k])
-					flag++;
-				k++;
+				if (t[i[0]].coord.x[i[3]] == cmp_t[i[1]].x[i[3]] &&
+						t[i[0]].coord.y[i[3]] == cmp_t[i[1]].y[i[3]])
+					i[2]++;
+				i[3]++;
 			}
-			if (flag == 3)
+			if (i[1]++ && i[2] == 3)
 				break ;
-			j++;
 		}
-		if (flag != 3)
+		if (i[2] != 3)
 			return (0);
-		i++;
+		i[0]++;
 	}
 	return (1);
 }
@@ -99,7 +92,7 @@ t_tetri		*ft_check_valid(char *buf, int *size_tetri)
 	vn = ft_cpy_tab(tab);
 	vn = ft_cpy_coord(vn, *size_tetri);
 	if (!ft_check_count(vn, *size_tetri)
-			|| !ft_check_pattern(vn, *size_tetri))
+			|| !ft_check_pattern(vn, *size_tetri, ft_tetriminos()))
 		return (NULL);
 	ft_del_tab(tab);
 	return (vn);

@@ -24,31 +24,29 @@ static int		ft_check_last_buf(char *buf)
 
 int				ft_check_buf(char *buf)
 {
-	int i;
-	int j;
-	int	c;
+	int i[3];
 
-	c = 0;
-	j = 0;
-	i = 4;
-	while (i < ft_strlen(buf) || buf[j] != '\0')
+	i[2] = 0;
+	i[1] = 0;
+	i[0] = 4;
+	while (i[0] < ft_strlen(buf) || buf[i[1]] != '\0')
 	{
-		if (i < ft_strlen(buf) && j == i)
+		if (i[0] < ft_strlen(buf) && i[1] == i[0])
 		{
-			if (buf[j] != '\n')
+			if (buf[i[1]] != '\n')
 				return (0);
-			c++;
-			if (c == 4)
+			i[2]++;
+			if (i[2] == 4)
 			{
-				c = -1;
-				i++;
+				i[2] = -1;
+				i[0]++;
 			}
 			else
-				i += 5;
+				i[0] += 5;
 		}
-		else if (buf[j] == '\n')
+		else if (buf[i[1]] == '\n')
 			return (0);
-		j++;
+		i[1]++;
 	}
 	return (1);
 }

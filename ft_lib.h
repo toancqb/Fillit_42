@@ -22,8 +22,6 @@
 # define X 4
 # define Y 4
 
-
-
 typedef struct	s_coord
 {
 	int x[4];
@@ -59,7 +57,7 @@ t_tetri	*ft_cpy_coord(t_tetri *t, int len);
 int		ft_check_count(t_tetri *t, int len);
 void	ft_display_tetri(t_tetri *t, int len);
 t_coord	*ft_tetriminos(void);
-int		ft_check_pattern(t_tetri *t, int len);
+int		ft_check_pattern(t_tetri *t, int len, t_coord *cmp_t);
 t_tetri	*ft_check_valid(char *buf, int *size_tetri);
 t_map	*ft_init_map(t_tetri *t, int size);
 void	ft_display_map(t_map map);
