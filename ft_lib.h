@@ -6,7 +6,7 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 14:13:07 by qtran             #+#    #+#             */
-/*   Updated: 2017/11/30 11:51:32 by qtran            ###   ########.fr       */
+/*   Updated: 2017/12/18 20:52:00 by qtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <sys/types.h>
-# include <sys/uio.h>
-#include <stdio.h>
 # define BUF_SIZE 2048
 # define NB_TETRI 19
 # define NB_BLOCK 19

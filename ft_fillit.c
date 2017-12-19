@@ -6,7 +6,7 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/30 09:37:10 by qtran             #+#    #+#             */
-/*   Updated: 2017/12/04 23:32:04 by qtran            ###   ########.fr       */
+/*   Updated: 2017/12/19 17:07:46 by qtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,18 @@ int		ft_bt(t_map *map, int k_tetri)
 					if (p)
 					{
 						map->t[k].flag = 1;
-						break ;
+						if (ft_done(map->t, map->size_tetri))
+						{
+							ft_display_map(*map);
+							ft_del_map(&map);
+							exit(1);
+						}
+						else
+						{
+							ft_bt(map, k_tetri + 1);
+							ft_del_tetri_from_map(map, k, i, j);
+							map->t[k].flag = 0;
+						}
 					}
 					j++;
 				}
@@ -58,29 +69,34 @@ int		ft_bt(t_map *map, int k_tetri)
 			}
 			if (!p)
 				return (0);
-			if (ft_done(map->t, map->size_tetri))
-			{
-				ft_display_map(*map);
-				ft_del_map(&map);
-				exit(1);
-			}
-			else
-			{
-				ft_bt(map, k_tetri + 1);
-				ft_del_tetri_from_map(map, k, i, j);
-				map->t[k].flag = 0;
-			}
 		}
 		k++;
 	}
 	return (0);
 }
+/*
+   int ft_bt(t_map *map, int k_tetri)
+   {
+   int i;
+   int j;
+   int k;
+
+   k = 0;
+   while (k < map->size_tetri)
+   {
+   if (!map->t[k].flag)
+   {
+
+   }
+   k++;
+   }
+   }*/
 
 void	ft_btracking(char *buf)
 {
-	int len;
-	int m_map;
-	t_map *map;
+	int		len;
+	int		m_map;
+	t_map	*map;
 
 	len = 0;
 	m_map = 2;
