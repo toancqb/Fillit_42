@@ -36,27 +36,3 @@ void	ft_display_map(t_map map)
 		i++;
 	}
 }
-/*
-   void	ft_display_tetri(t_tetri *t, int len)
-   {
-   int i;
-   int j;
-
-   i = 0;
-   while (i < len)
-   {
-   j = 0;
-   while (t[i].tab[j])
-   {
-   printf("%s\n", t[i].tab[j]);	// printf
-   j++;
-   }
-   j = 0;
-   while (j < 4)
-   {
-   printf("%d : (%d %d)\n", i, t[i].coord.x[j], t[i].coord.y[j]); // printf
-   j++;
-   }
-   i++;
-   }
-   }*/

@@ -6,7 +6,7 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 11:35:50 by qtran             #+#    #+#             */
-/*   Updated: 2017/12/04 23:35:03 by qtran            ###   ########.fr       */
+/*   Updated: 2017/12/20 15:54:04 by qtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 char    **ft_split_line(char *str, char c)
 {
-    char **tab;
+	char **tab;
 
-    tab = ft_strsplit((char const *)str, c);
-    return (tab);
+	tab = ft_strsplit((char const *)str, c);
+	return (tab);
 }
 
 char	**ft_init_tab(int x, int y)
 {
 	char	**str;
 	int		i;
-	int		j; //
+	int		j; 
 
 	if (!(str = (char **)malloc(sizeof(char*) * (x + 1))) || !str)
 		return (NULL);
@@ -34,12 +34,12 @@ char	**ft_init_tab(int x, int y)
 	{
 		if (!(str[i] = (char *)malloc(sizeof(char) * (y + 1))) || !str[i])
 			return (NULL);
-    j = 0;//
-    while (j < y)//
-    {
-      str[i][j] = '.';
-      j++;
-    }//
+		j = 0;
+		while (j < y)
+		{
+			str[i][j] = '.';
+			j++;
+		}//
 		str[i][y] = '\0';
 		i++;
 	}
@@ -48,19 +48,19 @@ char	**ft_init_tab(int x, int y)
 
 void ft_del_tab(char **tab)
 {
-  int i;
+	int i;
 
-  if (tab)
-  {
-    i = 0;
-    while (tab[i])
-    {
-      free(tab[i]);
-      i++;
-    }
-    *tab = NULL;
-    free(tab);
-  }
+	if (tab)
+	{
+		i = 0;
+		while (tab[i])
+		{
+			free(tab[i]);
+			i++;
+		}
+		*tab = NULL;
+		free(tab);
+	}
 }
 
 t_tetri	*ft_cpy_tab(char **tab)
@@ -128,7 +128,7 @@ t_tetri	*ft_cpy_coord(t_tetri *t, int len)
 	i = 0;
 	while (i < len)
 	{
-    t[i].flag = 0;
+		t[i].flag = 0;
 		ft_assign_coord(&t[i], t[i].tab);
 		i++;
 	}
