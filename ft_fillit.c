@@ -6,13 +6,13 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/30 09:37:10 by qtran             #+#    #+#             */
-/*   Updated: 2017/12/19 17:07:46 by qtran            ###   ########.fr       */
+/*   Updated: 2017/12/20 15:45:04 by qtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_lib.h"
 
-int		ft_done(t_tetri *t, int size)
+int		ft_done(t_map *map, t_tetri *t, int size)
 {
 	int i;
 
@@ -23,74 +23,57 @@ int		ft_done(t_tetri *t, int size)
 			return (0);
 		i++;
 	}
+	ft_display_map(*map);
+	ft_del_map(&map);
 	return (1);
 }
 
-int		ft_bt(t_map *map, int k_tetri)
+int		ft_try_all_pos(t_map *map, int k, int *i, int *j)
+{
+	while (*i < map->size)
+	{
+		*j = 0;
+		while (*j < map->size)
+		{
+			if (ft_add_tetri_to_map(map, k, *i, *j))
+			{
+				map->t[k].flag = 1;
+				if (!ft_done(map, map->t, map->size_tetri))
+				{
+					ft_bt(map);
+					ft_del_tetri_from_map(map, k, *i, *j);
+					map->t[k].flag = 0;
+				}
+				else
+					exit(EXIT_SUCCESS);
+			}
+			(*j)++;
+		}
+		(*i)++;
+	}
+	if (!(ft_add_tetri_to_map(map, k, *i, *j)))
+		return (0);
+	return (1);
+}
+
+int		ft_bt(t_map *map)
 {
 	int i;
 	int j;
 	int k;
-	int p;
 
-	k = 0;
-	while (k < map->size_tetri)
+	k = -1;
+	i = 0;
+	while (++k < map->size_tetri)
 	{
 		if (map->t[k].flag == 0)
 		{
-			i = 0;
-			while (i < map->size)
-			{
-				j = 0;
-				while (j < map->size)
-				{
-					p = ft_add_tetri_to_map(map, k, i, j);
-					if (p)
-					{
-						map->t[k].flag = 1;
-						if (ft_done(map->t, map->size_tetri))
-						{
-							ft_display_map(*map);
-							ft_del_map(&map);
-							exit(1);
-						}
-						else
-						{
-							ft_bt(map, k_tetri + 1);
-							ft_del_tetri_from_map(map, k, i, j);
-							map->t[k].flag = 0;
-						}
-					}
-					j++;
-				}
-				if (p)
-					break ;
-				i++;
-			}
-			if (!p)
-				return (0);
+			if (ft_try_all_pos(map, k, &i, &j) == 0)
+				break ;
 		}
-		k++;
 	}
 	return (0);
 }
-/*
-   int ft_bt(t_map *map, int k_tetri)
-   {
-   int i;
-   int j;
-   int k;
-
-   k = 0;
-   while (k < map->size_tetri)
-   {
-   if (!map->t[k].flag)
-   {
-
-   }
-   k++;
-   }
-   }*/
 
 void	ft_btracking(char *buf)
 {
@@ -106,7 +89,7 @@ void	ft_btracking(char *buf)
 	map->size_tetri = len;
 	while (m_map < 100)
 	{
-		if (ft_bt(map, 0))
+		if (ft_bt(map))
 			break ;
 		ft_del_tab(map->m);
 		m_map++;
