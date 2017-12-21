@@ -30,18 +30,13 @@ int		main(int argc, char *argv[])
 	{
 		fd = open(argv[1], O_RDONLY);
 		while ((n = read(fd, buf_tmp, 20)) > 0)
-		{
 			ft_strncat(buf, buf_tmp, n);
-		}
 		map->t = ft_check_valid(buf, &n);
-		if (map->t == NULL)
-		{
+		if (map->t != NULL)
+			ft_btracking(buf);
+		else
 			ft_error();
-			ft_del_map(&map);
-			exit(0);
-		}
 		ft_del_map(&map);
-		ft_btracking(buf);
 	}
 	return (0);
 }
