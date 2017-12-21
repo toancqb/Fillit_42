@@ -10,31 +10,39 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fillit
+NAME =fillit
 
 CC = gcc
 
+OPTIONS = -c
+
 CFLAGS = -Wall -Wextra -Werror
 
-HEADER = ft_lib.h
+RM = rm -rf
 
 SRC = main.c ft_string_process.c ft_check_valid.c ft_display.c ft_map.c \
-	  ft_fillit.c ft_check_format.c 
+		  ft_fillit.c ft_check_format.c
 
-OBJ = $(SRC:.c=.o)
+OBJ=$(SRC:.c=.o)
+
+HEAD_DIR = libft/
 
 all: $(NAME)
 
-$(NAME):
-	$(CC) $(CFLAGS) $(SRC) libft.a -o $(NAME)
+$(NAME): $(OBJ) Makefile
+	@$(CC) $(CFLAGS) $(OPTIONS) $(SRC)
+	@(cd $(HEAD_DIR) && $(MAKE) libft.a)
+	@$(CC) $(OBJ) libft/libft.a -o $(NAME)
 
 clean:
-	/bin/rm -rf $(OBJ)
+	@$(RM) $(OBJ)
+	@(cd $(HEAD_DIR) && $(MAKE) $@)
 
-fclean: clean
-	/bin/rm -rf $(NAME)
+fclean:
+	@(cd $(HEAD_DIR) && $(MAKE) $@)
+	@$(RM) $(OBJ)
+	@$(RM) $(NAME)
 
 re: fclean all
 
-.PHONY: clean fclean re all
-
+.PHONY : all clean fclean re

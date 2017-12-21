@@ -6,13 +6,13 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 11:35:50 by qtran             #+#    #+#             */
-/*   Updated: 2017/12/20 15:54:04 by qtran            ###   ########.fr       */
+/*   Updated: 2017/12/21 09:39:37 by qtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_lib.h"
 
-char    **ft_split_line(char *str, char c)
+char		**ft_split_line(char *str, char c)
 {
 	char **tab;
 
@@ -20,11 +20,11 @@ char    **ft_split_line(char *str, char c)
 	return (tab);
 }
 
-char	**ft_init_tab(int x, int y)
+char		**ft_init_tab(int x, int y)
 {
 	char	**str;
 	int		i;
-	int		j; 
+	int		j;
 
 	if (!(str = (char **)malloc(sizeof(char*) * (x + 1))) || !str)
 		return (NULL);
@@ -39,31 +39,14 @@ char	**ft_init_tab(int x, int y)
 		{
 			str[i][j] = '.';
 			j++;
-		}//
+		}
 		str[i][y] = '\0';
 		i++;
 	}
 	return (str);
 }
 
-void ft_del_tab(char **tab)
-{
-	int i;
-
-	if (tab)
-	{
-		i = 0;
-		while (tab[i])
-		{
-			free(tab[i]);
-			i++;
-		}
-		*tab = NULL;
-		free(tab);
-	}
-}
-
-t_tetri	*ft_cpy_tab(char **tab)
+t_tetri		*ft_cpy_tab(char **tab)
 {
 	int		i;
 	int		len;
@@ -98,8 +81,8 @@ static void	ft_assign_coord(t_tetri *t, char **tab)
 	int flag;
 
 	flag = 0;
-	i = 0;
-	while (tab[i])
+	i = -1;
+	while (tab[++i])
 	{
 		j = 0;
 		while (tab[i][j])
@@ -117,11 +100,10 @@ static void	ft_assign_coord(t_tetri *t, char **tab)
 			}
 			j++;
 		}
-		i++;
 	}
 }
 
-t_tetri	*ft_cpy_coord(t_tetri *t, int len)
+t_tetri		*ft_cpy_coord(t_tetri *t, int len)
 {
 	int i;
 

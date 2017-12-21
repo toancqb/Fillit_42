@@ -6,11 +6,28 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 17:12:06 by qtran             #+#    #+#             */
-/*   Updated: 2017/12/19 17:19:29 by qtran            ###   ########.fr       */
+/*   Updated: 2017/12/21 09:40:45 by qtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_lib.h"
+
+void			ft_del_tab(char **tab)
+{
+	int i;
+
+	if (tab)
+	{
+		i = 0;
+		while (tab[i])
+		{
+			free(tab[i]);
+			i++;
+		}
+		*tab = NULL;
+		free(tab);
+	}
+}
 
 static int		ft_check_last_buf(char *buf)
 {

@@ -25,7 +25,7 @@ int		main(int argc, char *argv[])
 	buf = ft_memalloc(BUF_SIZE);
 	buf_tmp = ft_memalloc(21);
 	if (argc != 2)
-		write(1, "usage: ./fillit source file\n", 27);
+		write(1, "usage: ./fillit source file\n", 28);
 	else
 	{
 		fd = open(argv[1], O_RDONLY);
@@ -40,11 +40,7 @@ int		main(int argc, char *argv[])
 			ft_del_map(&map);
 			exit(0);
 		}
-		//map->size_tetri = n;
 		ft_del_map(&map);
-		//ft_done(map->t, map->size_tetri);
-		//printf("\n%d\n", map->size_tetri);
-		//ft_bt(map, 0);
 		ft_btracking(buf);
 	}
 	return (0);
